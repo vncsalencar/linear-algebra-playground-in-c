@@ -22,12 +22,17 @@ int main() {
   // }
 
   Matrix m = {
+    ._id = debug_id(),
     .rows = 3,
     .cols = 3,
-    .data = (int[]) {1,2,3,0,4,5,0,0,6}
+    .data = (int[]) {1,4,5,4,2,6,5,6,3}
   };
 
   matrix_print(&m);
+  matrix_equals(&m, &m);
+
+  Matrix* n = create_matrix_init(3, 3, 3 * 3, (int[]) {1,4,5,4,2,6,5,6,3});
+  matrix_is_identity(n);
 
   return 0;
 }

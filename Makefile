@@ -17,4 +17,13 @@ debug: $(TARGET)
 clean:
 	rm -f $(TARGET)
 
+%: %.c algebra.c algebra.h
+	$(CC) $(CFLAGS) $< algebra.c -o $@
+
+run-%: %
+	./$*
+
+debug-%: %
+	DEBUG=1 ./$*
+
 .PHONY: all run debug clean
